@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#251c28" />
+  <title>For Chicklet — one honest letter</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar"><span class="brand-mark">K <i>♡</i> C</span><span class="top-note">Hello my lovikes</span></header>
+  <main class="container page-wrap">
+    <div class="progress-track" aria-label="Story progress"><div class="progress-fill" id="progressFill"></div></div>
+    <section class="screen active" id="welcome">
+      <div class="eyebrow"><span></span> A NOTE FOR ONE PERSON</div>
+      <h1>This site is for my<br><em>pretty girlfriend</em></h1>
+      <p class="hero-name">Chicklet Bruan Almonte</p>
+      <p class="lead-copy">Some memories deserve a quiet place to be remembered. I made this little page for you.</p>
+      <div class="memory-bubbles" aria-label="Memory photographs">
+        <figure class="bubble bubble-main"><img src="images/2.jpg" alt="A couple sharing a quiet moment"><figcaption>you + me</figcaption></figure>
+        <figure class="bubble bubble-small bubble-left"><img src="images/1.jpg" alt="Warm lights at a dinner"><figcaption>little dates</figcaption></figure>
+        <figure class="bubble bubble-small bubble-right"><img src="images/3.jpg" alt="Two hands held together"><figcaption>close moments</figcaption></figure>
+        <span class="float-heart heart-one">♥</span><span class="float-heart heart-two">✦</span>
+      </div>
+      <button class="btn btn-warm btn-lg" id="openGate">Open the next page <span>→</span></button>
+      <p class="tiny-note">Take your time. There’s no rush.</p>
+    </section>
+
+    <section class="screen question-screen" id="identity">
+      <div class="step-label">01 <span>·</span> A quick question</div><div class="question-icon">♡</div>
+      <h2>Are you Chicklet?</h2><p class="muted">This page was made especially for you.</p>
+      <div class="button-row"><button class="btn btn-warm" id="yesChicklet">Yes, that’s me</button><button class="btn btn-quiet" id="noChicklet">No</button></div>
+      <p class="feedback" id="identityFeedback" aria-live="polite"></p>
+    </section>
+
+    <section class="screen question-screen" id="quiz">
+      <div class="step-label" id="quizStep">02 <span>·</span> Just between us</div><div class="question-icon">✦</div>
+      <h2 id="quizQuestion">When is Kenji’s birthday?</h2><p class="muted">A little memory check · MM/DD/YY</p>
+      <form id="quizForm" class="answer-form"><input class="form-control answer-input" id="quizAnswer" inputmode="numeric" autocomplete="off" placeholder="MM/DD/YY" aria-label="Answer in MM/DD/YY format" /><button class="btn btn-warm" type="submit">That’s my answer <span>→</span></button></form>
+      <p class="feedback" id="quizFeedback" aria-live="polite"></p>
+    </section>
+
+    <section class="screen question-screen" id="letterAsk">
+      <div class="step-label">03 <span>·</span> The letter</div><div class="question-icon">✉</div>
+      <h2>Would you like to open<br>Kenji’s letter?</h2><p class="muted">You can say no. I’ll respect that.</p>
+      <div class="button-row"><button class="btn btn-warm" id="openLetter">Yes, show me</button><button class="btn btn-quiet" id="declineLetter">No, thank you</button></div>
+    </section>
+
+    <section class="screen letter-screen" id="letter">
+      <div class="step-label">A letter from Kenji</div><div class="letter-paper"><div class="letter-stamp">♡</div><p class="letter-date">For Chicklet</p><h2>Dear Chicklet,</h2>
+        <p>I made this because our story matters to me, and I wanted to remember it with tenderness. Whatever happens next, I’m grateful for the time, laughter,  I also know that love has to leave room for your feelings and your choice.</p>
+        <p>You don’t owe me a particular answer. I only hope we can treat each other kindly, whatever we decide.</p><p class="signoff">With love,<br><span>Kenji</span></p></div>
+      <button class="btn btn-warm" id="toMemories">Remember a few things with me <span>→</span></button>
+    </section>
+
+    <section class="screen question-screen" id="declined">
+      <div class="step-label">That’s okay</div><div class="question-icon">♡</div><h2>Thanks for being honest.</h2>
+      <p class="muted">Would you like to share why? You can skip this, too.</p>
+      <div class="reason-list"><button class="reason" data-reason="I don’t want to hear or read anything right now.">I don’t want to hear or read anything right now.</button><button class="reason" data-reason="I just don’t want to read the letter.">I just don’t want to read the letter.</button><button class="reason" data-reason="I’ve moved on and want to be left alone.">I’ve moved on and want to be left alone.</button></div>
+      <button class="btn btn-quiet mt-3" id="skipReason">Skip and continue</button><p class="feedback" id="reasonFeedback" aria-live="polite"></p>
+    </section>
+
+    <section class="screen memories-screen" id="memories">
+      <div class="step-label">04 <span>·</span> Three things I miss</div><h2>Some moments stay<br><em>soft around the edges.</em></h2><p class="muted">Tap each card to reveal a memory.</p>
+      <div class="memory-grid">
+        <button class="memory-card" aria-expanded="false"><span class="memory-number">01</span><span class="memory-art art-cafe">☕</span><span class="memory-title">Terrace Cafe</span><span class="memory-hint">Tap to reveal <b>＋</b></span><span class="memory-reveal">Our first meetup at Terrace Cafe, eating way too many wings. I remember thinking how easy it felt to laugh with you—and hoping there would be many more days like that.</span></button>
+        <button class="memory-card" aria-expanded="false"><span class="memory-number">02</span><span class="memory-art art-care">☁</span><span class="memory-title">Your caring heart</span><span class="memory-hint">Tap to reveal <b>＋</b></span><span class="memory-reveal">I miss how you looked after me when we were together: the small check-ins, the gentle reminders, and the way your presence could make a hard day feel lighter.</span></button>
+        <button class="memory-card" aria-expanded="false"><span class="memory-number">03</span><span class="memory-art art-together">↗</span><span class="memory-title">Anywhere, together</span><span class="memory-hint">Tap to reveal <b>＋</b></span><span class="memory-reveal">You always wanted us to go places together. Even a simple errand felt like an adventure when we were side by side. I miss that feeling of being your person for the day.</span></button>
+      </div>
+      <button class="btn btn-warm mt-4" id="toVideo">Continue <span>→</span></button>
+    </section>
+
+    <section class="screen video-screen" id="video">
+      <div class="step-label">05 <span>·</span> A few more seconds</div><h2>A little something<br><em>for you.</em></h2>
+      <div class="video-frame" id="videoFrame"><div class="video-placeholder"><span class="play-mark">▶</span><p>Add your video to <code>assets/our-video.mp4</code></p><small>It will appear here automatically.</small></div><video id="ourVideo" controls playsinline preload="metadata"><source src="images/vid.mp4" type="video/mp4">Your browser does not support video.</video></div>
+      <p class="muted video-caption">No video yet? You can still continue.</p><button class="btn btn-warm" id="toDecision">Continue <span>→</span></button>
+    </section>
+
+    <section class="screen question-screen decision-screen" id="decision">
+      <div class="step-label">06 <span>·</span> Your choice matters</div><div class="question-icon">♡</div>
+      <h2>Are you sure you want<br>to end our relationship?</h2><p class="muted">Please choose what feels right to you. There’s no wrong answer here.</p>
+      <div class="button-row decision-buttons"><button class="btn btn-quiet" id="yesBreakup">Yes, I’m sure</button><button class="btn btn-warm" id="noBreakup">No, let’s talk</button></div>
+    </section>
+
+    <section class="screen outcome-screen" id="outcomeYes">
+      <div class="step-label">A small gesture</div><div class="question-icon">✿</div><h2>I have something<br><em>for you.</em></h2><p class="muted">If you’d like to, visit Kuya Raffa’s flower base. There’s a letter tucked underneath.</p>
+      <div class="hint-card"><div class="hint-photo">🌷</div><div><strong>A little hint</strong><p>The flower base is where to look.</p><small>Add your own hint photo in <code>assets/flower-hint.jpg</code></small></div></div>
+      <button class="btn btn-quiet" id="finishYes">I’ve seen the message</button>
+    </section>
+
+    <section class="screen outcome-screen" id="outcomeNo">
+      <div class="step-label">An invitation</div><div class="question-icon">☕</div><h2>Let’s have<br><em>a real conversation.</em></h2><p class="muted">If you feel comfortable, I’d like to see you and listen.</p>
+      <div class="invite-card"><span class="invite-label">WHEN</span><strong>October 24, 2026 · 4:00 PM</strong><span class="invite-label mt-3">WHERE</span><strong>A&amp;E Coffee Shops<br>Balanga, Bataan</strong><p>Only if you want to. We can talk calmly, and I’ll respect whatever you decide.</p></div>
+      <button class="btn btn-quiet" id="finishNo">I’ve seen the message</button>
+    </section>
+
+    <section class="screen final-screen" id="final">
+      <div class="question-icon">♡</div><h2>Thank you for reading.</h2><p class="muted">Your answer has been saved on this device.</p>
+      <div class="answer-receipt"><span>HER ANSWER</span><strong id="finalAnswer">—</strong><small id="answerTime"></small></div>
+      <p class="tiny-note">Share your answer via email</p>
+      <button class="btn btn-warm" id="shareAnswer">Share her answer <span>↗</span></button><p class="feedback" id="shareFeedback" aria-live="polite"></p>
+    </section>
+    <footer class="footer-note">Made with care · <span>Kenji</span></footer>
+  </main>
+  <div class="toast-note" id="toastNote" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
