@@ -7,3 +7,4 @@
 @media(max-width:640px){.hint-photo{width:96px;height:96px}}
 .share-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.share-actions a{text-decoration:none}.share-actions .btn-quiet span{margin-left:8px}
 .outcome-continue{position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin:0 0 24px;pointer-events:auto;touch-action:manipulation;cursor:pointer}
+.screen.active{position:relative;z-index:1;pointer-events:auto}.outcome-screen .hint-card{position:relative;z-index:0}.outcome-screen .outcome-continue{z-index:3}

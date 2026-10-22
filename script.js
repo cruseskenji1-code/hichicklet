@@ -13,6 +13,14 @@
     progressFill.style.width = `${Math.max(8, Math.round((index + 1) / order.length * 100))}%`;
     window.scrollTo({top:0,behavior:'smooth'});
   }
+  // Handle the two final outcome buttons at the document level so their
+  // navigation still works if an older copy has mismatched share markup.
+  document.addEventListener('click', event => {
+    const finishButton = event.target.closest('#finishYes, #finishNo');
+    if (!finishButton) return;
+    event.preventDefault();
+    finish();
+  }, true);
   function say(message) {
     toast.textContent = message;
     toast.classList.add('show');
@@ -82,8 +90,6 @@
     if (emailAnswer) emailAnswer.href = `mailto:cruseskenji1@gmail.com?subject=${mailSubject}&body=${mailBody}`;
     show('final');
   }
-  document.getElementById('finishYes').addEventListener('click', finish);
-  document.getElementById('finishNo').addEventListener('click', finish);
   async function shareAnswer() {
     const text = `My answer: ${finalChoice}${selectedReason ? `\nWhy I declined the letter: ${selectedReason}` : ''}`;
     try {
