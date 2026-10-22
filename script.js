@@ -75,17 +75,20 @@
     try { localStorage.setItem('chickletPageResponse', JSON.stringify(response)); } catch (_) {}
     document.getElementById('finalAnswer').textContent = finalChoice;
     document.getElementById('answerTime').textContent = `Saved ${new Date(response.time).toLocaleString()}`;
+    const message = `My answer: ${finalChoice}${selectedReason ? `\nWhy I declined the letter: ${selectedReason}` : ''}`;
+    const mailSubject = encodeURIComponent('My answer to your letter');
+    const mailBody = encodeURIComponent(message);
+    document.getElementById('emailAnswer').href = `mailto:cruseskenji1@gmail.com?subject=${mailSubject}&body=${mailBody}`;
     show('final');
   }
   document.getElementById('finishYes').addEventListener('click', finish);
   document.getElementById('finishNo').addEventListener('click', finish);
-  document.getElementById('shareAnswer').addEventListener('click', async () => {
-    const response = {answer: finalChoice, reason: selectedReason || 'No reason shared'};
-    const text = `My answer: ${response.answer}${selectedReason ? `\nWhy I declined the letter: ${selectedReason}` : ''}`;
+  document.getElementById('shareMessenger').addEventListener('click', async () => {
+    const text = `My answer: ${finalChoice}${selectedReason ? `\nWhy I declined the letter: ${selectedReason}` : ''}`;
     try {
       if (navigator.share) await navigator.share({title:'My answer',text});
-      else if (navigator.clipboard) { await navigator.clipboard.writeText(text); document.getElementById('shareFeedback').textContent = 'Copied. You can paste this into a message to Kenji.'; }
-      else document.getElementById('shareFeedback').textContent = text;
-    } catch (error) { if (error.name !== 'AbortError') document.getElementById('shareFeedback').textContent = 'Sharing wasn’t available here. Her answer is still saved on this device.'; }
+      else if (navigator.clipboard) { await navigator.clipboard.writeText(text); document.getElementById('shareFeedback').textContent = 'Answer copied. Open Messenger and paste it into your chat with Kenji.'; }
+      else document.getElementById('shareFeedback').textContent = 'Open Messenger and send this answer: ' + text;
+    } catch (error) { if (error.name !== 'AbortError') document.getElementById('shareFeedback').textContent = 'Sharing wasn’t available here. Try the email option instead.'; }
   });
 })();
