@@ -28,6 +28,14 @@
   const quizAnswer = document.getElementById('quizAnswer');
   const quizFeedback = document.getElementById('quizFeedback');
   const quizStep = document.getElementById('quizStep');
+  // Keep the mobile numeric keypad, while inserting slashes as digits are typed.
+  quizAnswer.addEventListener('input', () => {
+    const digits = quizAnswer.value.replace(/\D/g, '').slice(0, 6);
+    let formatted = digits.slice(0, 2);
+    if (digits.length > 2) formatted += `/${digits.slice(2, 4)}`;
+    if (digits.length > 4) formatted += `/${digits.slice(4, 6)}`;
+    quizAnswer.value = formatted;
+  });
   document.getElementById('quizForm').addEventListener('submit', event => {
     event.preventDefault();
     const normalized = quizAnswer.value.trim().replace(/\s/g,'').replace(/-/g,'/');
