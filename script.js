@@ -78,17 +78,23 @@
     const message = `My answer: ${finalChoice}${selectedReason ? `\nWhy I declined the letter: ${selectedReason}` : ''}`;
     const mailSubject = encodeURIComponent('My answer to your letter');
     const mailBody = encodeURIComponent(message);
-    document.getElementById('emailAnswer').href = `mailto:cruseskenji1@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+    const emailAnswer = document.getElementById('emailAnswer');
+    if (emailAnswer) emailAnswer.href = `mailto:cruseskenji1@gmail.com?subject=${mailSubject}&body=${mailBody}`;
     show('final');
   }
   document.getElementById('finishYes').addEventListener('click', finish);
   document.getElementById('finishNo').addEventListener('click', finish);
-  document.getElementById('shareMessenger').addEventListener('click', async () => {
+  async function shareAnswer() {
     const text = `My answer: ${finalChoice}${selectedReason ? `\nWhy I declined the letter: ${selectedReason}` : ''}`;
     try {
       if (navigator.share) await navigator.share({title:'My answer',text});
       else if (navigator.clipboard) { await navigator.clipboard.writeText(text); document.getElementById('shareFeedback').textContent = 'Answer copied. Open Messenger and paste it into your chat with Kenji.'; }
       else document.getElementById('shareFeedback').textContent = 'Open Messenger and send this answer: ' + text;
     } catch (error) { if (error.name !== 'AbortError') document.getElementById('shareFeedback').textContent = 'Sharing wasn’t available here. Try the email option instead.'; }
-  });
+  }
+  const messengerButton = document.getElementById('shareMessenger');
+  if (messengerButton) messengerButton.addEventListener('click', shareAnswer);
+  // Support older copies of the page that still use the original share button.
+  const legacyShareButton = document.getElementById('shareAnswer');
+  if (legacyShareButton) legacyShareButton.addEventListener('click', shareAnswer);
 })();
